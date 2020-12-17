@@ -1,6 +1,6 @@
 package se.shoppa.suw.models;
 
-
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +14,8 @@ public interface PageRepository extends JpaRepository<Page, Integer>{
 	
 	@Query("SELECT p FROM Page p WHERE p.id != :id and p.slug = :slug")
 	Page findBySlug(int id, String slug);
+
+
+	List<Page> findAllByOrderBySortingAsc();
 
 }
