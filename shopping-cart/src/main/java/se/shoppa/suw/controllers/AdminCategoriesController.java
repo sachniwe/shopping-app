@@ -1,5 +1,6 @@
 package se.shoppa.suw.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -29,6 +30,9 @@ public class AdminCategoriesController {
     @GetMapping
     public String index(Model model){
         List<Category> categories = categoryRepo.findAll();
+
+        
+        
 
         model.addAttribute("categories", categories);
         return "admin/categories/index";
