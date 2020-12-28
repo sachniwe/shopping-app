@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private int id;
 
     @Size(min=2, message = "User Name must be at least 2 characters long")
-    private String uerName;
+    private String username;
 
 
     @Size(min=4, message = "User Name must be at least 4 characters long")
@@ -83,13 +83,7 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getUsername() {
-        return uerName;
-    }
-
-    public void setUserame(String uerName) {
-        this.uerName = uerName;
-    }
+    
 
     public String getPassword() {
         return password;
@@ -123,6 +117,14 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+  
     
 }

@@ -20,33 +20,31 @@ public class RegistrationController {
 
     @Autowired
     private UserRepository userRepo;
-
+    
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping
-    public String register(User user){
+    public String register(User user) {
         return "register";
-
     }
 
     @PostMapping
-    public String register(@Valid User user, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+    public String register(@Valid User user, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
             return "register";
         }
 
-        if(!user.getPassword().equals(user.getConfirmPassword())){
-            model.addAttribute("passwordMatchProblem", "Password do not match");
+        if (! user.getPassword().equals(user.getConfirmPassword())) {
+            model.addAttribute("passwordMatchProblem", "Passwords do not match!");
             return "register";
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
 
-        
         return "redirect:/login";
-
     }
     
 }
